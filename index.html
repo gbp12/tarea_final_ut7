@@ -14,32 +14,115 @@
         How to Structure your Article on your Website and Optimise its SEO
       </h1>
     </header>
-    <h2 class="subtitle">Descripcion del trabajo</h2>
+    <h2 class="subtitle">Instalacion del software necesario.</h2>
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-      veritatis natus nesciunt velit, iusto officiis pariatur dolorem ea dicta
-      adipisci, ad illo deserunt voluptates sequi praesentium voluptatem alias.
-      Maiores, aspernatur?
+      Para instalar nuestro servidor web, la segunda parte obligatoria es
+      instalar primero todo el software necesario para su funcionamiento. En
+      nuestro caso, instalaremos servidores SSH, FTP, Apache, MySQL y soporte de
+      PHP para el mismo. Iremos por el orden mencionado anteriormente paso a
+      paso
     </p>
-    <img
-      class="imagen"
-      src="./imagenes/prueba.png"
-      alt="descripcion de imagen"
-    />
+    <h2 style="margin-bottom: -20px" class="subtitle">Instalacion SSH</h2>
+    <img class="imagen" src="./imagenes/1.png" alt="descripcion de imagen" />
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-      veritatis natus nesciunt velit, iusto officiis pariatur dolorem ea dicta
-      adipisci, ad illo deserunt voluptates sequi praesentium voluptatem alias.
-      Maiores, aspernatur?
+      Ya nos vino instalado el propio SSH en sí cuando escogimos las opciones de
+      configurar la máquina, asi que solo tendremos que darle a systemctl enable
+      ssh con el sudo para que nos de los privilegios de administrador, le damos
+      a status y veremos que está funcionando perfectamente. Así que a
+      continuación nos meteremos con la instalación de nuestro servidor FTP
       <a href="#" class="link">Link de algo</a>
     </p>
-
-    <ul class="lista">
-      <li>Elemento</li>
-      <li>Elemento</li>
-      <li>Elemento</li>
-      <li>Elemento</li>
-    </ul>
+    <h2 class="subtitle">Instalacion FTP</h2>
+    <img class="imagen" src="./imagenes/2.png" alt="descripcion de imagen" />
+    <p>
+      Tras instalarlo con sudo apt install vsftpd, tendremos que configurar el
+      siguiente archivo con sudo conf, primero lo copiaremos por si hiciéramos
+      alguna configuración equivocada, y luego lo activaremos con ufw enable
+      como hicimos antes
+    </p>
+    <img class="imagen" src="./imagenes/3.png" alt="descripcion de imagen" />
+    <p>
+      Permitiremos los siguientes puertos para que la instalación del ftp
+      funcione sin problemas
+    </p>
+    <img class="imagen" src="./imagenes/4.png" alt="descripcion de imagen" />
+    <p>Reiniciamos para aplicar los cambios</p>
+    <img class="imagen" src="./imagenes/5.png" alt="descripcion de imagen" />
+    <p>
+      Tras reiniciarlo vemos que se inicio sin ningún problemas. El paso tercero
+      lo haremos más adelante, debido a que va relacionado con el certificado de
+      seguridad
+    </p>
+    <img class="imagen" src="./imagenes/6.png" alt="descripcion de imagen" />
+    <p>
+      Tras meternos en el nano conf, esto es lo que nos saldrá. Descomentamos el
+      write y el local enable y los ponemos como YES si no lo están ya
+    </p>
+    <img class="imagen" src="./imagenes/7.png" alt="descripcion de imagen" />
+    <p>
+      Nos aseguramos que chroot_local_user tenga yes y esté descomentado Las
+      siguientes configuraciones serán relativas al certificado de seguridad del
+      servidor Poniendo ahora el tercer paso de antes, nos meteremos en la
+      configuración del certificado de seguridad
+    </p>
+    <img class="imagen" src="./imagenes/8.png" alt="descripcion de imagen" />
+    <img class="imagen" src="./imagenes/9.png" alt="descripcion de imagen" />
+    <p>
+      Rellenaremos los datos que nos pidan según nos los vayan pidiendo, y tras
+      acabar reiniciaremos de nuevo
+    </p>
+    <p>
+      Nos metemos de nuevo en el conf y dejamos todo exactamente como está en
+      esta pantalla y reiniciaremos una vez másNos metemos de nuevo en el conf y
+      dejamos todo exactamente como está en esta pantalla y reiniciaremos una
+      vez más
+    </p>
+    <img class="imagen" src="./imagenes/10.png" alt="descripcion de imagen" />
+    <img class="imagen" src="./imagenes/11.png" alt="descripcion de imagen" />
+    <h2 class="subtitle">Instalacion SQL</h2>
+    <img class="imagen" src="./imagenes/12.png" alt="descripcion de imagen" />
+    <img class="imagen" src="./imagenes/13.png" alt="descripcion de imagen" />
+    <p>
+      Por motivos de seguridad, nos pedirá que configuremos una contraseña, tras
+      darle a secure_installation
+    </p>
+    <img class="imagen" src="./imagenes/14.png" alt="descripcion de imagen" />
+    <p>
+      Elegiremos una médium, que requiere números, mayuscula y minisculas, y
+      caracteres especiales como el * o @.
+    </p>
+    <p>
+      Nos dará error al ponerlo, porque no configuramos el comando al principio.
+      Este será el primer paso que haremos
+    </p>
+    <img class="imagen" src="./imagenes/16.png" alt="descripcion de imagen" />
+    <p>
+      Pondremos justo este comando, que ya nos dejará entrar, aunque debemos
+      entrar con un comando distinto. Esto por temas de seguridad, se
+      configurará más adelante
+    </p>
+    <img class="imagen" src="./imagenes/17.png" alt="descripcion de imagen" />
+    <p>Aqui configuramos la contraseña del root</p>
+    <img class="imagen" src="./imagenes/18.png" alt="descripcion de imagen" />
+    <p>
+      Y hacemos que no se pueda conectar al root desde otros ordenadores
+      distintos del host para cambios no deseados
+    </p>
+    <img class="imagen" src="./imagenes/19.png" alt="descripcion de imagen" />
+    <p>Y recargamos los privilegios de las tablas</p>
+    <img class="imagen" src="./imagenes/20.png" alt="descripcion de imagen" />
+    <p>
+      Entramos con el comando mysql -u root -p y nos deja entrar sin ningún
+      problema
+    </p>
+    <h2 class="subtitle">Soporte PHP</h2>
+    <img class="imagen" src="./imagenes/21.png" alt="descripcion de imagen" />
+    <p>Lo instalamos con el comando de arriba</p>
+    <img class="imagen" src="./imagenes/22.png" alt="descripcion de imagen" />
+    <p>
+      Y para ver la versión le daremos a php -v, que nos dice que estamos usando
+      la 8.1.2
+    </p>
   </body>
   <footer>
     <h2>Conclusiones</h2>
