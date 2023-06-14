@@ -9,11 +9,299 @@
   </head>
   <body>
     <header>
-      <div class="tag">#unidad7</div>
       <h1 class="mainTitle">
-        How to Structure your Article on your Website and Optimise its SEO
+        Como securizar un Ubuntu Server con Apache, FTP, SSH, MySQL y Soporte
+        para PHP
       </h1>
     </header>
+
+    <h2 class="subtitle">
+      Instalación del Ubuntu Server con particionamiento RAID 1
+    </h2>
+    <p>
+      Vamos a instalar la máquina Ubuntu Server para trabajar con ella. En el
+      proceso, crearemos un sistema de almacenamiento RAID 1 para la máquina.
+      Hace falta aclarar que la versión utilizada del servidor es la 22.04 y que
+      para el particionamiento RAID 1 son necesarios dos discos como mínimo.
+    </p>
+    <p>
+      Comenzando por el bootloader, se selecciona "Try or Install Ubuntu
+      Server". Tras esperar un poco, comenzará la instalación.
+    </p>
+    <img class="imagen" src="./imagenes/i1.png" alt="i1" />
+    <p>
+      Se empieza seleccionando el idioma. En nuestro caso, se escogerá
+      "Español".
+    </p>
+    <img class="imagen" src="./imagenes/i2.png" alt="i2" />
+    <p>
+      Se ofrece actualizar a una nueva versión del instalador. Como nosotros nos
+      seguiremos utilizando Ubuntu 22.04, no hacemos nada, seleccionamos
+      "Hecho".
+    </p>
+    <img class="imagen" src="./imagenes/i3.png" alt="i3" />
+    <p>
+      En cuanto a la configuración del teclado, se puede seleccionar la que se
+      quiera, pero lo común es dejar la que está por defecto (la correspondiente
+      al idioma que hemos seleccionado con anterioridad). Una vez establecida la
+      configuración, seleccionamos "Hecho".
+    </p>
+    <img class="imagen" src="./imagenes/i4.png" alt="i4" />
+    <p>
+      Ahora hay que decidir cuál es el tipo de instalación que realizaremos. Nos
+      decantaremos por la primera de todas ("Ubuntu Server") porque incluye un
+      conjunto de paquetes que hacen más cómoda la administración del servidor.
+      Después, seleccionamos "Hecho".
+    </p>
+    <img class="imagen" src="./imagenes/i5.png" alt="i5" />
+    <p>
+      A continuación se nos ofrece establecer una conexión de red con otros
+      equipos. Este apartado no nos interesa, por lo que seleccionamos "Hecho"
+      directamente.
+    </p>
+    <img class="imagen" src="./imagenes/i6.png" alt="i6" />
+    <p>
+      El siguiente apartado trata del uso de un servidor "proxy". Para el
+      objetivo de este tutorial no es interesante, por lo que seleccionamos
+      "Hecho" directamente.
+    </p>
+    <img class="imagen" src="./imagenes/i7.png" alt="i7" />
+    <p>
+      Tampoco nos interesa configurar nada relativo al servidor espejo, por lo
+      que seleccionamos "Hecho" directamente.
+    </p>
+    <img class="imagen" src="./imagenes/i8.png" alt="i8" />
+    <p>
+      Ahora se nos presentan opciones relativas a la configuración de
+      almacenamiento. Es aquí donde comenzaremos a crear con el particionamiento
+      RAID 1. Para ello, seleccionamos la última opción ("Custom storage
+      layout") y "Hecho", con lo que pasaríamos al siguiente apartado.
+    </p>
+    <img class="imagen" src="./imagenes/i9.png" alt="i9" />
+    <p>En esta pestaña realizaremos la secuencia descrita a continuación.</p>
+    <img class="imagen" src="./imagenes/i10.png" alt="i10" />
+    <p>
+      1.Crear las particiones primarias de cada disco de la forma que se puede
+      ver en las capturas:
+    </p>
+    <img class="imagen" src="./imagenes/i11.png" alt="i11" />
+    <img class="imagen" src="./imagenes/i12.png" alt="i12" />
+    <p>
+      2.Crear las particiones extendidas de cada disco de la forma que se puede
+      ver en las capturas, dejando el tamaño por defecto (el máximo posible) y
+      el formato indefinido.
+    </p>
+    <img class="imagen" src="./imagenes/i13.png" alt="i13" />
+    <img class="imagen" src="./imagenes/i14.png" alt="i14" />
+    <img class="imagen" src="./imagenes/i15.png" alt="i15" />
+    <img class="imagen" src="./imagenes/i16.png" alt="i16" />
+    <p>
+      3.Crear el software RAID, especificando que el nivel RAID será el 1 y que
+      las particiones involucradas serán las extendidas de cada disco.
+    </p>
+    <img class="imagen" src="./imagenes/i17.png" alt="i17" />
+    <img class="imagen" src="./imagenes/i18.png" alt="i18" />
+    <p>
+      4.Crear la partición extendida del dispositivo RAID 1, pero esta vez
+      dándole un formato concreto. En nuestro caso, hemos escogido "ext4".
+    </p>
+    <img class="imagen" src="./imagenes/i20.png" alt="i20" />
+    <img class="imagen" src="./imagenes/i21.png" alt="i21" />
+    <p>Una vez hecho todo, seleccionamos "Hecho".</p>
+    <img class="imagen" src="./imagenes/i22.png" alt="i22" />
+    <p>
+      Antes de continuar, se nos alerta que si continuamos se perderán todos los
+      datos de los discos seleccionados para formatear. Habría que preocuparse
+      si los discos tuviesen información, pero como no es el caso de los
+      creadores de este tutorial, se selecciona "Continuar".
+    </p>
+    <img class="imagen" src="./imagenes/i23.png" alt="i23" />
+    <p>
+      Después de hacer todo lo necesario en cuanto al almacenamiento, procedemos
+      a introducir otra información, en este caso el nombre real, del servidor y
+      de usuario, además de la contraseña de este último. Tras rellenar todos
+      los campos, seleccionamos "Hecho".
+    </p>
+    <img class="imagen" src="./imagenes/i24.png" alt="i24" />
+    <p>
+      En este apartado se nos ofrece instalar "Ubuntu Pro", que será útil
+      durante varios años para que las actualizaciones de seguridad abarquen una
+      mayor cantidad de paquetes. Instalarlo es una opción muy interesante. Tras
+      decidirlo, seleccionamos "Continuar".
+    </p>
+    <img class="imagen" src="./imagenes/i25.png" alt="i25" />
+    <p>
+      A continuación podemos instalar un servidor OpenSSH si así lo deseamos.
+      Dado que es un requisito para el resto del tutorial, marcamos la casilla
+      para hacerlo. Si no tenemos claves SSH, no hay problema. Seleccionamos
+      "Hecho".
+    </p>
+    <img class="imagen" src="./imagenes/i26.png" alt="i26" />
+    <p>
+      Aquí hay distintos snaps que podemos añadir al servidor para darle
+      determinadas utilidades. Sería cuestión de pararse a analizar cada uno a
+      ver cuál nos conviene más. Tras decidirlo, seleccionamos "Hecho".
+    </p>
+    <img class="imagen" src="./imagenes/i27.png" alt="i27" />
+    <p>
+      Y ya habríamos terminado. Ahora hay que esperar a que termine la
+      instalación.
+    </p>
+    <img class="imagen" src="./imagenes/i28.png" alt="i28" />
+    <p>
+      También se producirá una actualización. No se cancela, esperamos
+      pacientemente a que termine porque puede tener cosas interesantes.
+    </p>
+    <img class="imagen" src="./imagenes/i29.png" alt="i29" />
+    <p>Cuando la actualización acabe, seleccionamos "Reiniciar ahora".</p>
+    <img class="imagen" src="./imagenes/i30.png" alt="i30" />
+    <p>Aquí, presionamos "Enter".</p>
+    <img class="imagen" src="./imagenes/i31.png" alt="i31" />
+    <p>Ya hemos terminado la instalación del Ubuntu Server 22.04 con RAID 1.</p>
+    <img class="imagen" src="./imagenes/i32.png" alt="i32" />
+    <h2 class="subtitle">Creación de un sistema de copias de seguridad</h2>
+    <p>
+      Crear un sistema de copias de seguridad en un servidor seguro es muy
+      importante porque protege contra la pérdida y corrupción de datos,
+      producidas por diferentes causas. Este sistema de copias realizará una
+      copia incremental diaria y una copia completa semanal, y como ejemplo
+      actuará sobre un directorio (que es nuestro repositorio de GitHub).
+    </p>
+    <p>
+      Lo primero que haremos será ejecutar "sudo apt update" y "sudo apt
+      upgrade" para evitar problemas:
+    </p>
+    <img class="imagen" src="./imagenes/i33.png" alt="i33" />
+    <img class="imagen" src="./imagenes/i34.png" alt="i34" />
+    <p>
+      Ahora tenemos que instalar dos recursos: duplicity (la herramienta que nos
+      servirá para realizar copias de seguridad) y haveged (un demonio que es de
+      utilidad para la generación de claves aleatorias):
+    </p>
+    <img class="imagen" src="./imagenes/i36.png" alt="i36" />
+    <p>
+      Tras instalar duplicity y haveged, analizaremos si tenemos la herramienta
+      GPG instalada. Lo haremos porque duplicity la utiliza, además de que por
+      medio de ella generaremos claves aleatorias que hacen falta para crear los
+      scripts de las copias. Lo haremos con el siguiente comando:
+    </p>
+    <img class="imagen" src="./imagenes/i37.png" alt="i37" />
+    <p>En nuestro caso está ya instalado, y su versión es la 2.2.27.</p>
+    <img class="imagen" src="./imagenes/i38.png" alt="i38" />
+    <p>
+      Una vez hecho todo esto, pasemos a la verdadera acción. Generamos la
+      pareja de claves con GPG:
+    </p>
+    <img class="imagen" src="./imagenes/i39.png" alt="i39" />
+    <p>
+      Es necesario que introduzcamos un nombre y un correo electrónico para que
+      GPG pueda identificar nuestra pareja:
+    </p>
+    <img class="imagen" src="./imagenes/i41.png" alt="i41" />
+    <p>
+      Después de introducir la información se nos ofrece modificar los datos por
+      si no queremos que los anteriormente introducidos sean los almacenados. Es
+      cuestión de pulsar alguna de las letras que aparecen en la última línea de
+      la siguiente captura dependiendo de lo que queramos hacer. En nuestro
+      caso, como estamos conformes, pulsamos la "O":
+    </p>
+    <img class="imagen" src="./imagenes/i42.png" alt="i42" />
+    <p>
+      Ahora se nos ofrece introducir una frase de paso que habrá que escribir
+      cada vez que queramos acceder a la pareja de claves. No es obligatorio,
+      pero es muy recomendable porque añade una capa de seguridad extra y eso
+      siempre se agradece en este contexto. Hay que escribirla dos veces:
+    </p>
+    <img class="imagen" src="./imagenes/i43.png" alt="i43" />
+    <img class="imagen" src="./imagenes/i44.png" alt="i44" />
+    <p>
+      Pareja generada. Es "haveged" el que se ha encargado de generar los bytes
+      aleatorios para la clave.
+    </p>
+    <img class="imagen" src="./imagenes/i45.png" alt="i45" />
+    <p>
+      Tras generar la clave, estamos en condiciones de crear los scripts de las
+      copias de seguridad de, en nuestro caso, el directorio con los recursos de
+      nuestro repositorio. Sin embargo, antes deberíamos generar una copia de
+      seguridad completa del directorio, porque sin ella las copias de seguridad
+      incrementales diarias no podrán ejecutarse (las copias incrementales
+      necesitan un punto de referencia para realizarse, si no lo tienen no se
+      realizan).
+    </p>
+    <p>La copia de seguridad completa es generada de esta forma:</p>
+    <img class="imagen" src="./imagenes/i51.png" alt="i51" />
+    <p>También hay que insertar nuestra frase de paso.</p>
+    <img class="imagen" src="./imagenes/i52.png" alt="i52" />
+    <p>Copia completa generada.</p>
+    <img class="imagen" src="./imagenes/i53.png" alt="i53" />
+    <p>
+      Ahora sí, empecemos con el script de las copias incrementales diarias. Lo
+      creamos y abrimos a la vez por medio del comando "sudo nano". En la
+      captura puede verse que el script se está insertando en el directorio
+      "cron.daily", el correspondiente a los scripts que se ejecutan
+      diariamente.
+    </p>
+    <img class="imagen" src="./imagenes/i46.png" alt="i46" />
+    <p>
+      Dentro del script copiamos el siguiente contenido. En él se puede ver el
+      uso de la frase de paso que creamos con anterioridad. El formato es el
+      siguiente:
+    </p>
+    <p>
+      #!/bin/sh
+      <br />
+      export PASSPHRASE="frase_de_paso"
+      <br />
+      duplicity [full|incremental] [parámetros] directorio_del_que_hacer_copia
+      url_de_almacenamiento
+      <br />
+      unset PASSPHRASE
+    </p>
+    <p>
+      Se sobreentiende que el contenido del script puede variar dependiendo de
+      lo que se quiera copiar.
+    </p>
+    <img class="imagen" src="./imagenes/i48.png" alt="i48" />
+    <p>
+      Salimos del script y modificamos sus permisos para asegurar que puede ser
+      ejecutado:
+    </p>
+    <img class="imagen" src="./imagenes/i49.png" alt="i49" />
+    <p>Tras ejecutar el script, el resultado debería ser el siguiente:</p>
+    <img class="imagen" src="./imagenes/i54.png" alt="i54" />
+    <p>
+      Ya hemos finalizado con la copia incremental diaria. Ahora pasamos a la
+      completa semanal. El proceso es bastante más sencillo considerando que
+      este nuevo script tiene una sola diferencia con respecto al anterior.
+    </p>
+    <p>
+      Primero, copiamos el archivo de la copia incremental diaria en otro que
+      estará contenido en el directorio "cron.weekly", el directorio que
+      contiene los scripts ejecutados semanalmente.
+    </p>
+    <img class="imagen" src="./imagenes/i55.png" alt="i55" />
+    <p>
+      Abrimos el archivo indirectamente creado en el paso anterior con "sudo
+      nano".
+    </p>
+    <img class="imagen" src="./imagenes/i56.png" alt="i56" />
+    <p>
+      Y lo único que haremos es cambiar la palabra "incremental" por "full" en
+      la línea de duplicity, la que ejecuta la copia. De esta forma se
+      realizaría una copia completa del directorio de manera semanal.
+    </p>
+    <img class="imagen" src="./imagenes/i57.png" alt="i57" />
+    <p>
+      Para acabar, comprobamos que el script puede ejecutarse correctamente. Si
+      no es así, podemos probar a modificar los permisos a ver si ese es el
+      problema.
+    </p>
+    <img class="imagen" src="./imagenes/i58.png" alt="i58" />
+    <p>
+      Para concluir, se vuelve a recalcar que el contenido de los scripts puede
+      variar dependiendo de lo que se quiera copiar.
+    </p>
+
     <h2 class="subtitle">Instalacion del software necesario.</h2>
     <p>
       Para instalar nuestro servidor web, la segunda parte obligatoria es
@@ -123,8 +411,337 @@
       Y para ver la versión le daremos a php -v, que nos dice que estamos usando
       la 8.1.2
     </p>
+
+    <!-- A PARTIR DE AQUI PARTE DE DANIEL  -->
+    <h2 class="subtitle">Securización</h2>
+    <h2 class="subtitle">Securización del servidor SSH</h2>
+    <p>
+      Abra el archivo de configuración de SSH: Para ello, usaremos el siguiente
+      comando:
+    </p>
+    <p>$ sudo nano /etc/ssh/sshd_config</p>
+    <p>
+      Denegar la contraseña vacía: Usar una contraseña vacía pone en alto riesgo
+      la seguridad de SSH. Por lo tanto, para asegurar la conexión SSH, deberá
+      rechazar todos los intentos de inicio de sesión con una contraseña vacía.
+      Para realizar este paso, ubique la línea “PermitEmptyPasswords no” y
+      descoméntalo.
+    </p>
+    <img class="imagen" src="./imagenes/securizacion1.png" />
+    <p>
+      Permitir el inicio de sesión raíz: Si lo denegamos, disminuirán las
+      probabilidades de que un intruso pueda acceder a nuestro SSH simplemente
+      por medio de “root” (usuario al que se puede acceder simplemente con
+      “sudo” y poniendo la contraseña). Para ello, busca la opción
+      “PermitRootLogin”, descomentamos la línea y reemplazamos el texto
+      “prohibit-password" con "no”.
+    </p>
+    <img class="imagen" src="./imagenes/securizacion2.png" />
+    <p>
+      El protocolo SSH 2: La versión 1 es vulnerable a un agujero de seguridad
+      que potencialmente permite a un intruso insertar datos en la corriente de
+      comunicación, además de que las patentes de algunos de sus algoritmos de
+      cifrado han expirado. La versión 2 del protocolo SSH tiene un algoritmo de
+      intercambio de claves mejorado que no es vulnerable a ese agujero. Para
+      utilizarlo, debemos añadir la línea "Protocol 2" en el archivo de
+      configuración justo por encima de donde pone “Include
+      /etc/ssh/sshd_config.d/*.conf”
+    </p>
+    <img class="imagen" src="./imagenes/securizacion3.png" />
+    <p>
+      Establecer un tiempo de espera de sesión: Puede reducir el tiempo de
+      sesión de su servidor SSH para permitir que el intruso acceda a su
+      sistema. Por ejemplo, si establecemos el valor en 200 segundos y el
+      usuario permanece alejado de su sistema durante 200 segundos, se cerrará
+      automáticamente. Para hacer este paso, busque la variable con el nombre
+      “ClientAliveInterval”. Descomenta la variable y cambia el valor 0 con la
+      cantidad de segundos.
+    </p>
+    <img class="imagen" src="./imagenes/securizacion4.png" />
+    <p>
+      Permitir que un usuario específico acceda al servidor: Para realizar este
+      paso, escribe la variable “AllowUsers” en el archivo de configuración.
+      Luego escribe el nombre del usuario delante de la variable.
+    </p>
+    <img class="imagen" src="./imagenes/securizacion5.png" />
+    <p>
+      Limita el número de intentos de inicio de sesión: Esto puede ayudar a
+      evitar ataques de fuerza bruta, una forma de recuperar una clave probando
+      todas las combinaciones posibles hasta encontrar aquella que permite el
+      acceso. Para esto, buscamos la variable “MaxAuthTries", la descomentamos y
+      elegimos el valor que queramos (por defecto será 6).
+    </p>
+    <img class="imagen" src="./imagenes/securizacion6.png" />
+    <p>
+      Una vez hecho esto, solo queda Guardar el archivo pulsando CTRL+X seguido
+      de Y, y luego pulsa Intro (Esto es importante, pues lo vamos a hacer
+      constantemente a la hora de securizar cada una de las aplicaciones
+      instaladas en Ubuntu Server):
+    </p>
+    <img class="imagen" src="./imagenes/securizacion7.png" />
+    <p>Ejecutar el servidor en modo de prueba con el siguiente comando:</p>
+    <p>$ sudo sshd -t</p>
+    <p>
+      Este comando no devuelve ningún resultado. Si se ejecuta sin errores,
+      significa que las configuraciones son correctas.
+    </p>
+    <p>
+      Recargar el servidor para realizar los cambios en Ubuntu con el siguiente
+      comando:
+    </p>
+    <p>$ sudo service sshd reload</p>
+
+    <h2 style="margin-bottom: 0px; background-color: red" class="subtitle">
+      Securización de servidor FTP
+    </h2>
+    <pre></pre>
+    <div>
+      <p>
+        Generar el certificado de seguridad SSL y usarlo para proteger el
+        servidor FTP de Ubuntu. Con el comando "sudo openssl req -x509 -nodes
+        -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out
+        /etc/ssl/private/vsftpd.pem". (Nos pedirán varios datos como el país,
+        estado o provincia, correo electrónico…)
+      </p>
+      <pre></pre>
+      <p>
+        Abrir el archivo de configuración con el comando "sudo nano
+        /etc/vsftpd.conf".
+      </p>
+      <p>Con un ‘#’ comenta las siguientes líneas (Si no lo están ya):</p>
+      <p>#rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeol.pem</p>
+      <p>#rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key</p>
+      <pre></pre>
+      <p>
+        Nos dirigimos al final del archivo y escribimos las siguientes líneas
+        (si no están ya):
+      </p>
+      <p>rsa_cert_file=/etc/ssl/private/vsftpd.pem</p>
+      <p>rsa_private_key_file=/etc/ssl/private/vsftpd.pem</p>
+      <pre></pre>
+      <p>
+        Ahora habilitaremos SSL y nos aseguraremos de que solo los clientes que
+        tengan SSL habilitados nos puedan contactar. Buscamos el archivo
+        ssl_enable y cambiamos su valor a YES.
+      </p>
+      <pre></pre>
+    </div>
+    <p>
+      A continuación, añade las siguientes líneas para prohibir cualquier
+      conexión anónima a través de SSK:
+    </p>
+    <p>allow_anon_ssl=NO</p>
+    <p>force_local_data_ssl=YES</p>
+    <p>force_local_logins_ssl=YES</p>
+    <pre></pre>
+    <p>Configura el servidor para usar TLS usando:</p>
+    <p>ssl_tlsv1=YES</p>
+    <p>ssl_sslv2=NO</p>
+    <p>ssl_sslv3=NO</p>
+    <pre></pre>
+    <p>
+      En primer lugar, no será necesario reutilizar SSL porque puede ocasionar
+      que muchos clientes de FTP se averíen. En segundo lugar, utilizaremos
+      suites de encriptación de alto cifrado, lo que significa que las
+      longitudes de claves son iguales o superiores a 128 bits:
+    </p>
+    <p>require_ssl_reuse=NO</p>
+    <p>ssl_ciphers=HIGH</p>
+    <pre></pre>
+    <p>
+      (En este caso, no tuve que cambiar nada para securizar FTP ya que ya
+      estaba todo así por defecto.)
+    </p>
+    <pre></pre>
+    <p>
+      Guardar el archivo y reiniciamos vsftpd una vez más para aplicar las
+      nuevas configuraciones utilizando el comando "sudo systemctl restart
+      vsftpd".
+    </p>
+
+    <h2 style="margin-bottom: 0px" class="subtitle">
+      Securización de servidor Apache
+    </h2>
+    <pre></pre>
+
+    <p>
+      Desactivar listado de directorios: Para ello nos dirigiremos al fichero de
+      configuración escribiendo "sudo nano /etc/apache2/apache2.conf",
+      buscaremos la directiva ‘Options’, debiendo quedar de la siguiente forma:
+    </p>
+
+    <img class="imagen" src="./imagenes/securizacion8.png" />
+
+    <p>
+      Permitir o Denegar acceso a directorios: Podemos configurar el acceso a
+      los directorios desde el fichero de configuración con los siguientes
+      parámetros:
+    </p>
+    <p>
+      None: No permitirá a los usuarios activar ninguna funcionalidad sobre este
+      directorio.
+    </p>
+    <p>Deny, Allow: Este es el orden en el que serán procesadas las órdenes.</p>
+    <p>
+      Deny from all: Esta directiva denegará el acceso a las peticiones de todos
+      los usuarios al directorio ‘root’.
+    </p>
+    <p>Debe quedar de la siguiente forma:</p>
+    <img class="imagen" src="./imagenes/securizacion9.png" />
+    <p>
+      Usar Mod_Evasive: Mod_evasive previene ataques DDoS y ataques por fuerza
+      bruta, procesando cada petición con detenimiento analizando su
+      composición. Usa tres métodos de detección:
+    </p>
+    <p>1- Si detecta muchas peticiones en la página en pocos segundos.</p>
+    <p>
+      2- Si cualquier proceso trata de realizar más de cincuenta peticiones
+      concurrentes.
+    </p>
+    <p>
+      3- Si una IP sigue intentando hacer nuevas peticiones cuando ésta se
+      encuentra en lista negra.
+    </p>
+    <p>
+      Para su instalación sólo deberemos ejecutar el comando “sudo apt-get
+      install libapache2-mod-evasive”.
+    </p>
+
+    <h2 style="margin-bottom: 0px" class="subtitle">Securización de MySQL</h2>
+    <pre></pre>
+    <p>
+      Para configurar MySql, lo primero que hay que hacer es escribir el comando
+      “mysql -u root -p” y luego escribir la contraseña que hayamos puesto en
+      MySql (NO CONFUNDIR CON LA CONTRASEÑA DEL UBUNTU SERVER).
+    </p>
+    <pre></pre>
+    <p>
+      Cambiar el usuario root por otro nombre: Podemos cambiar el usuario por
+      defecto de root por otro usuario que nos convenga. Esto lo hacemos para
+      que no se tenga acceso a través del mismo. Para hacer esto, solo debemos
+      escribir "RENAME USER root@localhost TO nuevonombre@localhost; FLUSH
+      PRIVILEGES;".
+    </p>
+    <pre></pre>
+    <p>
+      Para no tener que tocar el usuario root, crearemos un nuevo usuario con
+      privilegios sobre todas las tablas. Escribimos "CREATE USER
+      nombreUsuario@localhost IDENTIFIED BY ‘contraseña’" (LA CONTRASEÑA DEBE
+      ESTAR ENTRE COMILLAS SIMPLES).
+    </p>
+    <pre></pre>
+    <p>
+      Asignamos privilegios al usuario para que pueda utilizar todas las tablas
+      escribiendo "GRANT ALL PRIVILEGES ON *.* TO nombreUsuario@localhost;".
+    </p>
+    <p>
+      Comprobamos que se han asignado correctamente usando "SHOW GRANTS FOR
+      nombreUsuario@localhost;".
+    </p>
+
+    <h2 style="margin-bottom: 0px" class="subtitle">Securizar PHP</h2>
+    <pre></pre>
+    <p>
+      Para configurar MySql, lo primero que hay que hacer es escribir el comando
+      “sudo nano /etc/php/apache2/php.ini”.
+    </p>
+    <pre></pre>
+    <p>
+      Deshabilitar expose_php: expose_php es una variable que permite mostrar
+      qué versión de PHP está instalada en el servidor en la cabecera HTML. Por
+      ende debe ir desactivada, así un atacante no podrá conocer qué versión de
+      PHP usas debe quedar así: “expose_php = Off”.
+    </p>
+    <img class="imagen" src="./imagenes/securizacion10.png" />
+    <p>
+      Deshabilitar session.use_trans_sid: Con la variable session.use_trans_sid
+      resulta más fácil la programación de aplicaciones que usen sessiones. La
+      desventaja es que cuando está activado puede llegar a ser usado para
+      simular una sesión activa en el server. Debe quedar así:
+      “session.use_trans_sid = Off”.
+    </p>
+    <img class="imagen" src="./imagenes/securizacion11.png" />
+    <p>
+      Desactivar acceso a URL remotas en funciones de manejo de ficheros:
+      Funciones como include, fopen o file_get_contents permiten, además de
+      hacer llamadas a ficheros locales, llamar a ficheros vía URL, esto puede
+      provocar graves errores de seguridad invocando a scripts maliciosos que se
+      encuentran fuera de nuestro servidor y su ejecución remota. Debe poner
+      "allow_url_fopen = Off":
+    </p>
+    <img class="imagen" src="./imagenes/securizacion12.png" />
+    <p>
+      Visualización y registro de errores: evitamos que cualquier error o
+      warning se muestre por pantalla y hacemos que se registren directamente en
+      un log especificado con estas directivas: debe poner “display_errors =
+      Off”, “log_errors = On” y finalmente “error_log = (aquí ponemos donde se
+      visualizarán los errores)”
+    </p>
+    <img class="imagen" src="./imagenes/securizacion13.png" />
+    <img class="imagen" src="./imagenes/securizacion14.png" />
+    <p>
+      Deshabilitar enable_dl: Esta variable se usa solamente en conjunto con el
+      servidor web Apache. Sirve para activar o desactivar la carga dinámica de
+      extensiones PHP con dl() por servidor virtual o directorio. Con la carga
+      dinámica, es posible ignorar todas las restricciones open_basedir. Debe
+      quedar de la siguiente forma: “enable_dl = Off”.
+    </p>
+    <img class="imagen" src="./imagenes/securizacion15.png" />
+
+    <h2 style="margin-bottom: 0px" class="subtitle">Securización general</h2>
+
+    <pre></pre>
+
+    <p>
+      CONFIGURAR EL FIREWALL DEL EQUIPO PARA EVITAR ACCESOS INDESEADOS: Con el
+      fin de evitar accesos indeseados es altamente recomendable activar el
+      firewall del equipo que aloja los servicios. Hay muchas formas de
+      configurar el firewall de un equipo Linux, pero en principio la solución
+      más fácil para los principiantes sería usar ufw. Para instalar ufw,
+      ejecutamos el comando “sudo apt install ufw” en la terminal.
+    </p>
+    <p>
+      Ahora tendremos que definir la política por defecto del Firewall para
+      mejorar la seguridad de nuestro servidor. En este caso lo primero que
+      realizo es definir las siguientes reglas:
+    </p>
+    <pre></pre>
+    <p>- Que todo el tráfico saliente esté permitido.</p>
+    <p>- Que la totalidad del tráfico entrante esté bloqueado.</p>
+    <pre></pre>
+    <p>
+      Para aplicar estas 2 reglas solo hay que ejecutar los siguientes comandos
+      en la terminal:
+    </p>
+    <p>sudo ufw default allow outgoing</p>
+    <p>sudo ufw default deny incoming</p>
+    <pre></pre>
+    <p>
+      Lo siguiente será habilitar ssh en el firewall con el comando “sudo ufw
+      allow puerto/tcp”. Acto seguido tendríamos que definir las reglas para dar
+      acceso al servidor web que proporcionará el servicio a los clientes. Para
+      ello ejecutaremos los siguientes comandos en la terminal:
+    </p>
+    <p>sudo ufw allow 80/tcp</p>
+    <p>sudo ufw allow 443/tcp</p>
+    <p>
+      Una vez hecho todo esto, solo queda asegurar que el firewall está activo y
+      que se levanta cada vez que se reinicia el equipo. Para ello, utilizaremos
+      el comando “sudo ufw enable”.
+    </p>
+    <pre></pre>
+    <p>
+      ACTUALIZAR EL EQUIPO QUE ALOJA EL SERVICIO WEB: Para actualizar nuestro
+      sistema operativo de forma automática tan solo tenemos que instalar el
+      paquete unattended-upgrades. Para ello solo tenemos que ejecutar el
+      comando “sudo apt install unattended-upgrades” en la terminal.
+    </p>
+    <p>
+      Una vez instalado el paquete activen las actualizaciones automáticas
+      ejecutando el comando “sudo dpkg-reconfigure -plow unattended-upgrades”.
+    </p>
   </body>
-  <footer>
+  <!--  <footer>
     <h2>Conclusiones</h2>
     <div class="conclusiones">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
@@ -135,5 +752,5 @@
       Delectus sint eaque molestiae fugit quam ut assumenda voluptas, aperiam
       nisi aspernatur ad?
     </div>
-  </footer>
+  </footer>-->
 </html>
